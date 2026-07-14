@@ -26,7 +26,6 @@ jobs:
         uses: azure/login@v2
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-
       - name: Create Azure resource group
         if: success()
         run: |
@@ -35,7 +34,7 @@ jobs:
       - name: Create Azure app service plan
         if: success()
         run: |
-          az appservice plan create --resource-group ${{env.AZURE_RESOURCE_GROUP}} --name ${{env.AZURE_APP_PLAN}} --is-linux --sku B1 --subscription ${{secrets.AZURE_SUBSCRIPTION_ID}}
+          az appservice plan create --resource-group ${{env.AZURE_RESOURCE_GROUP}} --name ${{env.AZURE_APP_PLAN}} --is-linux --sku F1 --subscription ${{secrets.AZURE_SUBSCRIPTION_ID}}
 
       - name: Create webapp resource
         if: success()
